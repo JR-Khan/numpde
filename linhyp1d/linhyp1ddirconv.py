@@ -60,9 +60,8 @@ def solve(N, cfl, scheme, rbc, Tf, uinit):
     x   = x[1:-1]
     err = np.abs(u - uinit(x-a*t))
     em  = np.max(err)
-    e1  = h*err[0] + h*np.sum(err[1:-2])
-    err = err**2
-    e2  = np.sqrt(h*err[0] + h*np.sum(err[1:-2]))
+    e1  = h*np.sum(err)
+    e2  = np.sqrt(h*np.sum(err**2))
     return em,e1,e2
 
 # Get arguments
